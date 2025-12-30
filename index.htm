@@ -115,6 +115,7 @@
   flex-direction: column;
   overflow: hidden;
 }
+
   </style>
 </head>
 <body>
@@ -145,25 +146,40 @@
   const messages = document.getElementById('messages');
   const input = document.getElementById('userInput');
 
-  const responses = [
-    { keywords: ["school name", "name",], reply: "The school name is Light House School." },
-	{ keywords: ["hi", "hey","Hi", "Hey"], reply: "Hi, How can i help you?" },
-    { keywords: ["location", "located", "where"], reply: "Light House School is located in the city center and is easily accessible." },
-    { keywords: ["branch", "branches"], reply: "Yes, Light House School has two branches." },
-    { keywords: ["grades", "teach", "levels"], reply: "We teach students from Kindergarten up to Grade 8." },
-    { keywords: ["grade 8"], reply: "Yes, Grade 8 is available at Light House School." },
-    { keywords: ["private"], reply: "Light House School is a private school." },
-    { keywords: ["curriculum", "syllabus"], reply: "We follow the national curriculum with modern teaching methods." },
-    { keywords: ["library"], reply: "Yes, the school has a well-equipped library." },
-    { keywords: ["laboratory", "lab"], reply: "Yes, we have science laboratories for practical learning." },
-    { keywords: ["computer", "ict"], reply: "Yes, computer labs with internet access are available." },
-    { keywords: ["extra", "tutorial", "revision"], reply: "Yes, extra tutorial and revision classes are provided." },
-    { keywords: ["transport", "bus"], reply: "Yes, school bus transportation is available." },
-    { keywords: ["uniform"], reply: "Yes, all students are required to wear the school uniform." },
-    { keywords: ["contact", "phone", "email"], reply: "You can contact the school office during working hours." },
-	{ keywords: ["thank you", "nice", "great"], reply: "You can contact the school office during working hours." }
-	 
-  ];
+ const responses = [
+  { keywords: ["school name", "name"], reply: "The school name is Light House School." },
+  { keywords: ["hi", "hey"], reply: "Hi, how can I help you?" },
+  { keywords: ["location", "located", "where"], reply: "Light House School is located in the city center and is easily accessible." },
+  { keywords: ["branch", "branches"], reply: "Yes, Light House School has two branches." },
+  { keywords: ["grades", "teach", "levels"], reply: "We teach students from Kindergarten up to Grade 8." },
+  { keywords: ["grade 8"], reply: "Yes, Grade 8 is available at Light House School." },
+  { keywords: ["private"], reply: "Light House School is a private school." },
+  { keywords: ["curriculum", "syllabus"], reply: "We follow the national curriculum with modern teaching methods." },
+  { keywords: ["library"], reply: "Yes, the school has a well-equipped library." },
+  { keywords: ["laboratory", "lab"], reply: "Yes, we have science laboratories for practical learning." },
+  { keywords: ["computer", "ict"], reply: "Yes, computer labs with internet access are available." },
+  { keywords: ["extra", "tutorial", "revision"], reply: "Yes, extra tutorial and revision classes are provided." },
+  { keywords: ["transport", "bus"], reply: "Yes, school bus transportation is available." },
+  { keywords: ["uniform"], reply: "Yes, all students are required to wear the school uniform." },
+  { keywords: ["contact", "phone", "email"], reply: "You can contact the school office during working hours." },
+  { keywords: ["thank you", "great", "nice"], reply: "Glad to help! 😊" }
+];
+
+  
+  function addMessage(text, sender) {
+  const div = document.createElement('div');
+  div.className = sender;
+  div.textContent = text;
+  messages.appendChild(div);
+
+  // Remove oldest messages if too many
+  if (messages.children.length > 50) {
+    messages.removeChild(messages.children[0]);
+  }
+
+  messages.scrollTop = messages.scrollHeight;
+}
+
 
   function addMessage(text, sender) {
     const div = document.createElement('div');
